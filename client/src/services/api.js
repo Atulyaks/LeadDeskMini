@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://leaddesk-api-b520.onrender.com/api",
 });
 
 API.interceptors.request.use((config) => {
@@ -13,5 +13,5 @@ API.interceptors.request.use((config) => {
 
   return config;
 });
-baseURL: "http://localhost:5000/api"
+
 export default API;
