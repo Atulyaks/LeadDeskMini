@@ -1,50 +1,45 @@
-
-const Lead = require("./models/Lead");
 const express = require("express");
-const leadRoutes = require("./routes/leadRoutes");
 const cors = require("cors");
 require("dotenv").config();
-const authRoutes = require("./routes/authRoutes");
+
 const sequelize = require("./config/db");
+
+require("./models/Lead");
+
+const leadRoutes = require("./routes/leadRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
 app.use("/api/leads", leadRoutes);
 app.use("/api/auth", authRoutes);
+
+// Health Check
 app.get("/", (req, res) => {
   res.json({
+    success: true,
     message: "LeadDesk Mini API is running 🚀",
   });
 });
 
+// Database Connection
 sequelize
   .sync()
   .then(() => {
     console.log("✅ Connected to MySQL");
 
-    app.listen(process.env.PORT, () => {
-      console.log(`🚀 Server running on port ${process.env.PORT}`);
+    const PORT = process.env.PORT || 5000;
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
     console.error("❌ Database connection failed");
     console.error(err);
   });
-  const { Sequelize } = require("sequelize");
-require("dotenv").config();
-
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: "mysql",
-    logging: false,
-  }
-);
-
-module.exports = sequelize;
