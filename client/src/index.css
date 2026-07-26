@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Global ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #f8fafc;
+  color: #111827;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- Animated Mesh Background ---------- */
+
+@keyframes floatOne {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(80px, 40px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes floatTwo {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(-70px, 60px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes floatThree {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(60px, -60px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.blob1 {
+  top: -150px;
+  left: -120px;
+  animation: floatOne 14s ease-in-out infinite;
+}
+
+.blob2 {
+  animation: floatTwo 18s ease-in-out infinite;
+}
+
+.blob3 {
+  bottom: -150px;
+  animation: floatThree 20s ease-in-out infinite;
+}
+
+/* ---------- Nice Scrollbar ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* ---------- Selection ---------- */
+
+::selection {
+  background: #2563eb;
+  color: white;
+}
+
+/* ---------- Smooth Animations ---------- */
+
+button,
+a,
+input,
+textarea,
+select {
+  transition: all 0.3s ease;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
