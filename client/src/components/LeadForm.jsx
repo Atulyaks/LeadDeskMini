@@ -64,11 +64,14 @@ function LeadForm() {
         message: "",
       });
     } catch (err) {
-      console.error(err);
-      toast.error("Unable to submit lead");
-    } finally {
-      setLoading(false);
-    }
+  console.error(err);
+
+  toast.error(
+    err.response?.data?.errors?.[0]?.msg ||
+    err.response?.data?.message ||
+    "Unable to submit lead"
+  );
+}
   };
 
   return (

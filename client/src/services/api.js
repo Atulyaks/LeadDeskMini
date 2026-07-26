@@ -13,5 +13,5 @@ API.interceptors.request.use((config) => {
 
   return config;
 });
-
+baseURL: "http://localhost:5000/api"
 export default API;
